@@ -41,7 +41,7 @@ class EmotionDetectorApp:
         if file_path:
             try:
                 img = Image.open(file_path)
-                # Redimensionar la imagen a un tamaño máximo de 300x300
+                # Redimensionar la imagen
                 img.thumbnail((400, 700))
                 img = ImageTk.PhotoImage(img)
                 self.image_label.config(image=img)
@@ -63,7 +63,7 @@ class EmotionDetectorApp:
             ret, frame = self.cap.read()
             if ret:
                 try:
-                    # Convertir el frame de OpenCV a un formato compatible con PIL
+                    s
                     cv2_im = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     img = Image.fromarray(cv2_im)
                     img.thumbnail((800, 800))
@@ -93,8 +93,8 @@ class EmotionDetectorApp:
             self.cap.release()
         self.window.destroy()
 
-# Iniciar la aplicación
+
 window = tk.Tk()
 app = EmotionDetectorApp(window)
-window.protocol("WM_DELETE_WINDOW", app.close)  # Asegurar liberar la cámara al cerrar
+window.protocol("WM_DELETE_WINDOW", app.close) 
 window.mainloop()
